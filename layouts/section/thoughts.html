@@ -1,0 +1,67 @@
+{{ define "main" }}
+    {{- $path := "" -}}
+    {{- with .File -}}
+        {{- $path = .Path -}}
+    {{- else -}}
+        {{- $path = .Path -}}
+    {{- end -}}
+
+    {{ if and (eq .Kind "section") .Content }}
+        {{ partial "pages/post.html" . }}
+    {{ else }}
+        <main class="main list" id="main">
+            <div class="main-inner">
+                <div class="content list-group">
+                    <p>A page still work in progress.</p>
+                    <p>Idea is to keep a running list of half-baked thoughts that are not formal enough to be in a writing post itself but not shitty. Probably just scratch if too annoying to update/writing suffices</p>
+
+                    <p>For the original idea, see <a href="https://nadia.xyz/notes/" target="_blank">https://nadia.xyz/notes/</a></p>
+                    <!-- TODO: view by year -->
+
+                    {{ .Scratch.Delete "pages" }}
+
+                    <!-- Section -->
+                    {{ $sectionPage := .CurrentSection }}
+                    {{ range .Site.RegularPages }}
+                        {{ if (.IsDescendant $sectionPage) }}
+                            {{ $.Scratch.Add "pages" (slice .) }}
+                        {{ end }}
+                    {{ end }}
+
+                    <!-- Start List -->
+                    {{ $pages := .Scratch.Get "pages" }}
+                    {{ range $pages.GroupByDate "2006" }}
+                        {{ $.Scratch.Delete "zodiacName" }}
+                        {{ if $.Site.Params.chineseZodiac }}
+                            {{ $zodiacName := (index $.Site.Data.ChineseZodiac (string (mod .Key 12))) }}
+                            {{ $.Scratch.Set "zodiacName" $zodiacName }}
+                        {{ end }}
+                        {{ $zodiacName := $.Scratch.Get "zodiacName" }}
+                        {{ $year := .Key }}
+                        <h2 class="list-year thought">{{ $year }}{{ if $.Site.Params.chineseZodiac }}{{ partial "utils/icon.html" (dict "$" $ "name" $zodiacName "class" "chinese-zodiac") }}{{ end }}</h2>
+                        {{ range .Pages.GroupByDate "January" }}
+                            {{ $.Scratch.Delete "month" }}
+                            {{ if $.Site.Params.i18nMonth }}
+                                {{ $month := i18n (lower .Key) }}
+                                {{ $.Scratch.Set "month" $month }}
+                            {{ else }}
+                                {{ $.Scratch.Set "month" .Key }}
+                            {{ end }}
+                            {{ $month := $.Scratch.Get "month" }}
+                            <!--<h3 class="list-month">{{ $month }}</h3>-->
+                            {{- $pages := .Pages -}}
+                                {{- with $pages -}}
+                                        {{ range . }}
+                                        <div class="thought-item">
+                                            <span class=""> {{ .PublishDate.Format .Site.Params.listDateFormat }} </span>
+                                            <p>{{ partial "utils/markdownify.html" (dict "$" $ "raw" .Content "isContent" false) }}</p>
+                                        </div>
+                                        {{ end }}
+                                {{ end }}
+                            {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        </main>
+    {{ end }}
+{{ end }}

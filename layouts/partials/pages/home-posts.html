@@ -1,0 +1,16 @@
+<main class="main single compact-post" id="main">
+    <div class="main-inner">
+        <div class="home-intro">    
+            <span>{{ partial "utils/markdownify.html" (dict "$" . "raw" "Hi there! Welcome to my little writing space, where I wonder about the world" "isContent" false) }}</span>
+            <span class="home-emoji dark">{{ partial "utils/markdownify.html" (dict "$" . "raw" ":milky_way:" "isContent" false) }}</span>
+            <span class="home-emoji light">{{ partial "utils/markdownify.html" (dict "$" . "raw" ":sunrise:" "isContent" false) }}</span>
+        </div>
+        <h4 class="term-title">Recent Writings:</h4>
+        {{ range (where .Site.RegularPages "Section" "in" (slice "writings") | first 3) }}
+            {{ partial "components/compact-post-preview.html" (dict "$" . "isHome" true)}}
+        {{ end }}
+        <div class="browse-all">
+            <span><a href="/writings/" class="home-link">Browse all &gt;</a></span>
+        </div>
+    </div>
+</main>

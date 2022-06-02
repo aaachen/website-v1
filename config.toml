@@ -2,8 +2,8 @@
 # Site Settings
 
 
-baseURL = "https://example.com/"
-title = "Forest"
+baseURL = "axyc.me"
+title = "axyc.me"
 languageCode = "en"
 hasCJKLanguage = false
 # Copyright information (Markdown supported)
@@ -23,10 +23,10 @@ defaultContentLanguageInSubdir = false
 pluralizeListTitles = false
 
 # The length of text in words to show in summary
-summaryLength = 42
+summaryLength = 14
 
 # Enable Emoji emoticons support?
-enableEmoji = false
+enableEmoji = true
 
 # Text to display for footnote return links
 footnoteReturnLinkContents = "↩"
@@ -40,7 +40,7 @@ enableRobotsTXT = true
 # Number of items per page in paginated
 # lists (valid for the `posts` homepage
 # layout in MemE)
-paginate = 5
+paginate = 10
 
 # URL related
 disablePathToLower = false
@@ -49,13 +49,16 @@ uglyURLs = false
 
 # URL structure
 [permalinks]
-    categories = "/categories/:slug/"
+    # categories = "/categories/:slug/"
     tags = "/tags/:slug/"
+    series = "/series/:slug/"
 
 # Taxonomies
 [taxonomies]
+    # If set the categoryBy to "section", meme should use the layout in /layouts/section/categories.html by commenting out below taxonomy entry
     # category = "categories"
     tag = "tags"
+    series = "series"
 
 # Modified date
 [frontmatter]
@@ -99,17 +102,17 @@ uglyURLs = false
 # Author’s information
 [author]
     # Name
-    name = "Andrew"
+    name = "Andrew Chen"
     # Email
-    email = "andrewxychen@gmail.com"
+    email = "mugseller22@gmail.com"
     # Motto or introduction
-    motto = "TODO"
+    motto = "Andrew's writer blog - wondering about the world"
     # Avatar
     avatar = "/icons/apple-touch-icon.png"
     # Personal website, default: baseURL
-    website = "TODO"
+    website = "axyc.me"
     # Twitter
-    twitter = "TODO"
+    twitter = "none"
 
 # Related content
 [related]
@@ -117,7 +120,8 @@ uglyURLs = false
     includeNewer = true
     toLower = true
     [[related.indices]]
-        name = "categories"
+        # change key word from "categories" to "relatedKeys"
+        name = "relatedKeys"
         weight = 100
     [[related.indices]]
         name = "tags"
@@ -204,42 +208,54 @@ uglyURLs = false
 
 [menu]
     ## Menu bar
-    # [[menu.main]]
-    #     pageref = "/"
-    #     name = "Home"
-    #     weight = 1
-    #     pre = "internal"
-    #     post = "home"
+    #[[menu.main]]
+    #      pageref = "/"
+    #      name = "Home"
+    #      weight = 1
+    #      pre = "internal"
+    #      post = "home"
     [[menu.main]]
-        pageref = "/posts/"
-        name = "Posts"
-        weight = 2
+        pageref = "/writings/"
+        name = "Writings"
+        weight = 1
         pre = "internal"
-        post = "archive"
+        post = ""
     [[menu.main]]
-        pageref = "/tags/"
-        name = "Tags"
+        pageref = "/books/"
+        name = "Books"
         weight = 3
         pre = "internal"
-        post = "tags"
+        post = ""
+    # TODO: maybe remove this
+    #[[menu.main]]
+    #    pageref = "/thoughts/"
+    #    name = "Thoughts"
+    #    weight = 4
+    #    pre = "internal"
+    #    post = ""
+    [[menu.main]]
+        pageref = "/archive/"
+        name = "Archive"
+        weight = 5
+        pre = "internal"
+        post = ""
     [[menu.main]]
         pageref = "/about/"
         name = "About"
-        weight = 4
-        pre = "internal"
-        post = "user-circle"
-    [[menu.main]]
-        weight = 5
-        identifier = "theme-switcher"
-    [[menu.main]]
         weight = 6
-        identifier = "lang-switcher"
+        pre = "internal"
+        post = ""
     [[menu.main]]
         weight = 7
-        identifier = "search"
-        post = "search"
-
-
+        identifier = "theme-switcher"
+    #[[menu.main]]
+    #    weight = 6
+    #    identifier = "lang-switcher"
+    # see lunr search
+    #[[menu.main]]
+    #    weight = 7
+    #    identifier = "search"
+    #    post = "search"
 
 ##########################################
 # Theme Settings
@@ -247,8 +263,11 @@ uglyURLs = false
 [params]
     ######################################
     # Header
-
+    # These settings don't seem very configurable
     enableHeader = true
+
+    # Note: center or flex
+    headerLayout = "flex"
 
     enableHeaderAutoHide = false
     # Note: works for header layout flex only
@@ -256,20 +275,21 @@ uglyURLs = false
     displayHeaderInHome = true
     # Note: invalid for header layout flex
 
-    headerBackground = "linear-gradient(90deg, #f795331a 0, #f370551a 15%, #ef4e7b1a 30%, #a166ab1a 44%, #5073b81a 58%, #1098ad1a 72%, #07b39b1a 86%, #6dba821a 100%)"
+    #headerBackground = "linear-gradient(90deg, #f795331a 0, #f370551a 15%, #ef4e7b1a 30%, #a166ab1a 44%, #5073b81a 58%, #1098ad1a 72%, #07b39b1a 86%, #6dba821a 100%)"
+    # .header-wrapper background color gets overridden if backdrop-filter is not supported
+    headerBackground = "var(--color-bg)"
     # Note: https://developer.mozilla.org/en-US/docs/Web/CSS/background
-
-    headerLayout = "flex"
-    # Note: center or flex
 
     # Hide menu bar and display a toggle
     # on narrow screen?
     enableNavToggle = true
 
-    navHeight = "10em"
     # Note: menu bar height when it’s
-    #       toggled
+    #       toggled in mobile view
+    navHeight = "7em"
 
+    # Note: should let background be the same theme background for desired effect
+    useBoxShadow = true
 
     ######################################
     # Brand Bar (inside header)
@@ -279,8 +299,8 @@ uglyURLs = false
     # If true, put your SVG in the `SVG.toml`
     # file and configure the following options.
     # Unit: px
-    siteBrandSVGWidth = 250
-    siteBrandSVGHeight = 100
+    siteBrandSVGWidth = 150
+    siteBrandSVGHeight = 30
     siteBrandSVGFill = "#fff"
     # If false, your site title will be
     # used as the default and displayed as
@@ -289,12 +309,13 @@ uglyURLs = false
     # family can be configured in typography
     # section at the bottom of this file.
     # Unit: em
-    siteBrandFontSize = 1
+    siteBrandTitle = "心&宇"
+    siteBrandFontSize = 1.9
     siteBrandFontColor = "var(--color-contrast-high)"
-
 
     ######################################
     # Menu Bar
+    # Those are only for the center layout it seems
 
     enableMenu = true
     # Note: invalid for header layout flex
@@ -325,6 +346,18 @@ uglyURLs = false
     ## Poetry
     # Verse (Markdown supported)
     homePoetry = []
+
+    # Add introduction, only poetry is supported now
+    intro = "poetry"
+    introPoetryVerses = ["I guess all I can do is embrace the pandemonium", "find happiness in the unique insanity of being here, now"]
+    letterDelay = 25
+    completeLingerDelay = 250
+    completeFadeOutDuration = 300
+    # In new page session, expiration time since last intro is played
+    # intro is played after elapsed time > expiration time 
+    # unit: minute. Default: 0
+    introReplayExpiration = 0
+
     # Padding of links at the bottom
     # Unit: em
     homeLinksPadding = 1
@@ -348,7 +381,7 @@ uglyURLs = false
     siteLogo = "/icons/apple-touch-icon.png"
     # Note: used for JSON-LD, Open Graph
 
-    siteDescription = "TODO: blog of a sleep deprived boy"
+    siteDescription = "Andrew C's writing blog - 陈心宇的个人博客"
     # Note: used for HTML head meta, JSON-LD,
     #       Open Graph, Atom, RSS
 
@@ -356,7 +389,7 @@ uglyURLs = false
     # ATTENTION: keep this format, change
     #            the number
 
-    siteTwitter = "reuixiy"
+    siteTwitter = ""
     # Note: used for Twitter Cards
 
 
@@ -386,6 +419,13 @@ uglyURLs = false
     # tree organization structure of your
     # posts.
 
+    # Me: pro of categories (no nested folders). Con is it doesn't match hugo's notion of section and does not share the variable/functions
+    # pro/con of sections is the opposite of categories 
+    # Using sections as the category archive navigation follows the section, design around this. 
+    # The pagination implementation (if needed) can work pretty seamlessly at the section layout (just need to have a switch block for current section)
+
+    # The main con with section is if there's a lot of sections, then there'd be a lot of folders.
+    # other "con" is it's not using the category slug. It probably makes more sense to limit the page variation so this might be a pro for section
     categoryBy = "sections"
     # ATTENTION: If you set it to `sections`,
     #            be sure to delete `categories`
@@ -433,15 +473,16 @@ uglyURLs = false
     ######################################
     # List Page
 
-    listWidth = 36
+    # listWidth = 42
+    listWidth = 45
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
 
     displayListTitle = true
 
-    # listDateFormat = "January 2"
-    listDateFormat = "1 月 2 日"
+    listDateFormat = "January 2"
+    # listDateFormat = "1 月 2 日"
     # ATTENTION: be sure to follow the
     #            specified format
     #            https://gohugo.io/functions/format/
@@ -488,8 +529,10 @@ uglyURLs = false
     # Note: the name of the section is the
     #       name of the folder under the
     #       site’s `content` directory.
+    
+    # Used for categories for categories page, etc.
 
-    #mainSections = ["posts"]
+    mainSections = ["writings", "books"]
 
 
     ######################################
@@ -525,13 +568,16 @@ uglyURLs = false
 
     enableDarkMode = true
 
-    defaultTheme = "light"
+    # This is bugged
+    defaultTheme = "dark"
     # Note: light or dark
 
-    hideThemeToggle = false
+    # hideThemeSwitcher anywhwere but home
+    hideThemeToggle = false  
+    # hideThemeSwitcher in home
     hideThemeToggleInHome = false
-    # Note: If dark mode is enabled and
-    #       theme toggle is hidden, your
+    # Note: If dark mode is enabled (note: typo? should be disabled) 
+    #       and theme toggle is hidden, your
     #       readers may still read your
     #       blog in dark mode if the
     #       reader’s system is set to dark
@@ -543,7 +589,6 @@ uglyURLs = false
     #       hidden the theme toggle.
     #       Unless you enable the following
     #       option.
-
     overrideSystemPreferences = false
 
 
@@ -565,7 +610,6 @@ uglyURLs = false
     #       site.webmanifest to manifest.json,
     #       and check and modify related
     #       content (the path of the icons).
-
     themeColor = "#fff"
     themeColorDark = "#16171d"
     safariMaskColor = "#2a6df4"
@@ -602,7 +646,7 @@ uglyURLs = false
     # Note: render only in production
     #       environment
 
-    enableServiceWorker = false
+    enableServiceWorker = true
 
 
     ######################################
@@ -651,7 +695,6 @@ uglyURLs = false
     # directly load the comments after pages loaded
     autoLoadComments = false
 
-    ## Disqus
     enableDisqus = false
     disqusShortname = ""
 
@@ -752,22 +795,36 @@ uglyURLs = false
     ######################################
     # Post Settings
 
-    # The color change duration of the
-    # hyperlink (in seconds)
-    duration = 0.5
+    # Hyperlink settings:
+
+    # The color change duration of the hyperlink, theme switcher, etc. (in seconds)
+    # default: 0.5s
+    duration = 0.4
 
     # Primary color of light mode
-    primaryColorLight = "220, 90%, 56%"
+    # blue
+    #primaryColorLight = "220, 90%, 56%"
+    primaryColorLight = "179, 63%, 40%"
+
+
     # Primary color of dark mode
-    primaryColorDark = "201, 65%, 62%"
+    # blue
+    # primaryColorDark = "201, 65%, 62%"
+
+    # green
+    primaryColorDark = "166, 95%, 70%"
+
+    # gold
+    #primaryColorDark = "46, 65%, 82%"
     # ATTENTION: only HSL color values ​​are
     #            supported
 
     # The content width of the post
-    postWidth = 36
+    postWidth = 45
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
+    # self-note: this should be consistent with listWidth
 
     # Is the post original?
     original = true
@@ -781,15 +838,14 @@ uglyURLs = false
 
     ######################################
     # Post Description
-
     displayPostDescription = true
 
 
     ######################################
     # Post Meta Info
 
-    # TODO: false?
-    enablePostMeta = true
+    # whether to enable post meta by default
+    enablePostMeta = false
     # Note: *global settings*
     #       `meta` in post’s Front Matter
     #       has a higher priority than here
@@ -806,17 +862,17 @@ uglyURLs = false
     displayPublishedDate = true
     publishedDateIcon = "calendar-alt"
 
-    displayModifiedDate = true
+    displayModifiedDate = false
     modifiedDateIcon = "calendar-check"
 
-    displayExpiredDate = true
+    displayExpiredDate = false
     expiredDateIcon = "calendar-times"
 
     displayCategory = false
     categoryIcon = "folder"
     categoryDelimiter = "/"
 
-    displayWordCount = true
+    displayWordCount = false
     wordCountIcon = "pencil-alt"
 
     displayReadingTime = true
@@ -829,7 +885,6 @@ uglyURLs = false
     #       Homepage is not supported yet
     #       https://busuanzi.ibruce.info/
 
-
     ######################################
     # Markdown Related
 
@@ -840,6 +895,7 @@ uglyURLs = false
     ######################################
     # Table of Contents
 
+    # Enable TOC by default, can be overriden by toc front matter
     enableTOC = false
     # Note: *global settings*
     #       `toc` in post’s Front Matter
@@ -847,7 +903,7 @@ uglyURLs = false
 
     displayTOCTitle = true
 
-    displayTOCNum = true
+    displayTOCNum = false
     # Note: *global settings*
     #       `tocNum` in post’s Front Matter
     #       has a higher priority than here
@@ -977,45 +1033,39 @@ uglyURLs = false
     #       if you use SVG as your site
     #       brand.
 
-# TODO: align on font
+    # https://fonts.google.com
+
     # Site brand
-    fontFamilySiteBrand = ""
+    fontFamilySiteBrand = "'Liu Jian Mao Cao', cursive"
+
     # Menu bar
-    fontFamilyMenu = "Libre Franklin, sans-serif"
+    fontFamilyMenu = "'Source Sans Pro', sans-serif"
+
     # Post title, post subtitle, list title, year and month title of the list, related posts title, previous/next post title, header of table, term/name in a definition list
-    #fontFamilyTitle = "'Comfortaa', sans-serif"
-    fontFamilyTitle = "'Tiro Devanagari Sanskrit', sans-serif"
-    #fontFamilyTitle = "'Antic Slab', serif"
-#fontFamilyTitle = "'Nanum Myeongjo', serif"
-    #fontFamilyTitle = "'Antic Slab', serif"
-    #fontFamilyTitle = "'Antic Slab', serif"
+    #fontFamilyTitle = "'Vesper Libre', serif"
+    fontFamilyTitle = "'Philosopher', sans-serif"
 
     # Headings, toc title
-    #fontFamilyHeadings = "'Comfortaa', sans-serif"
-    fontFamilyHeadings = "'Tiro Devanagari Sanskrit', sans-serif"
-    #fontFamilyHeadings = "'Antic Slab', serif"
-#fontFamilyHeadings = "'Nanum Myeongjo', serif"
+    fontFamilyHeadings = "'Philosopher', sans-serif"
 
     # Code, superscript, post meta info, post updated badge, post gitinfo, minimal footer, busuanzi site view counter
     fontFamilyCode = "'Source Code Pro', monospace"
     # Blockquotes
-    fontFamilyQuote = ""
+    fontFamilyQuote = "'EB Garamond', serif"
     # Table of contents
     fontFamilyTOC = ""
     # Caption
     fontFamilyCaption = ""
     # Footer
-    fontFamilyFooter = ""
+    fontFamilyFooter = "'Lora', serif"
     # Body
-fontFamilyBody = "'Tiro Devanagari Sanskrit', sans-serif"
-#fontFamilyBody = "'Antic Slab', serif"
-#fontFamilyBody = "'Nanum Myeongjo', serif"
-#fontFamilyBody = "'Quattrocento', serif"
-#fontFamilyBody = "'Spectral', serif"
+    #fontFamilyBody = "'Tiro Devanagari Sanskrit', serif"
+    fontFamilyBody = "'Lora', serif"
 
     # Embed fonts link
-#fontsLink = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@700&display=swap"
-fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Franklin:wght@100&family=Nanum+Myeongjo&family=Quattrocento&family=Spectral:wght@200&family=Tiro+Devanagari+Sanskrit&display=swap"
+    fontsLink = "https://fonts.googleapis.com/css2?family=EB+Garamond&family=Liu+Jian+Mao+Cao&family=Lora&family=Open+Sans:wght@500&family=Philosopher&family=Source+Code+Pro&family=Source+Sans+Pro&family=Vesper+Libre&display=swap"
+
+    #fontsLink = ""
     # Note: In order for the reader to
     #       experience the fonts you set,
     #       it is best to use web fonts.
@@ -1029,7 +1079,8 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     ## Font Size (unit: px)
 
-    fontSize = 18
+    # default font size in browser is 16px
+    fontSize = 16
 
     ######################################
     ## Tab Size
@@ -1039,7 +1090,8 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     ## Line Height
 
-    lineHeight = 1.618
+    #lineHeight = 1.8
+    lineHeight = 2 # 34 px for article
     # Note: apply to post paragraph & toc
     #       only
 
@@ -1062,6 +1114,8 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     ## Text Justification
 
+    # https://practicaltypography.com/justified-text.html
+    # will ensure lines are of same length
     enableJustify = false
     # Note: *global settings*
     #       `align` in post’s Front Matter
@@ -1070,7 +1124,8 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     ## Drop Cap
 
-    enableDropCap = true
+    # enableDropCap = true
+    enableDropCap = false
     # Note: *global settings*
     #       `dropCap` in post’s Front Matter
     #       has a higher priority than here
@@ -1116,7 +1171,7 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     # Post Copyright
 
-    enablePostCopyright = false
+    enablePostCopyright = true
 
     displayPostCopyright = false
     # Note: *global settings*
@@ -1142,14 +1197,14 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     # Post Gitinfo
 
-    enablePostGitInfo = false
+    # require enableGitInfo to be true
+    enablePostGitInfo = true
 
-    displayPostGitInfo = false
+    displayPostGitInfo = true
     # Note: *global settings*
     #       `gitinfo` in post’s Front Matter
     #       has a higher priority than here
 
-    # TODO: edit
     repoURL = ""
     repoEditURL = ""
 
@@ -1173,28 +1228,29 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
 
     enablePostShare = true
 
-    displayPostShare = true
+    displayPostShare = false
     # Note: *global settings*
     #       `share` in post’s Front Matter
     #       has a higher priority than here
 
-    displayShareOnText = false
+    displayShareOnText = true
 
     shareOnTwitter = true
     shareOnFacebook = true
     shareOnLinkedIn = true
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
+    shareOnTelegram = false
+    shareOnWeibo = false
+    shareOnDouban = false
+    shareOnQQ = false
+    shareOnQzone = false
 
-    shareViaQRCode = true
+    shareViaQRCode = false
 
 
     ######################################
     # Related Posts
 
+    # reference: https://github.com/he-sb/Blog/tree/master/content/posts
     enableRelatedPosts = true
 
     displayRelatedPosts = true
@@ -1204,13 +1260,13 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
 
     relatedPostsNumber = 5
 
-    relatedPostsIcon = "plus-circle"
+    relatedPostsIcon = ""
 
 
     ######################################
     # Post Tags
 
-    enablePostTags = true
+    enablePostTags = false
 
     postTagsIcon = "tag"
 
@@ -1238,8 +1294,9 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     ######################################
     # Minimal Footer
 
-    enableMinimalFooter = false
-    enableVerticalBarStructure = false
+    # minimal footer in each page (i.e. #blog, writings)
+    enableMinimalFooter = true
+    enableVerticalBarStructure = true
     # Note: If you enable this, the
     #       categories or sections that
     #       displayed on the right will
@@ -1257,9 +1314,9 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
 
     enableBackToTopAutoHide = true
 
-    displayBackToTopInHome = true
+    displayBackToTopInHome = false
 
-    displayBackToTopOnMobile = false
+    displayBackToTopOnMobile = true
 
     backToTopIcon = "arrow-up"
 
@@ -1276,7 +1333,7 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     displayCopyleftSymbol = false
     displayCopyrightSymbol = true
 
-    displaySiteCreatedYear = true
+    displaySiteCreatedYear = false
 
     # Leave it empty("") if you don’t want
     # the icon
@@ -1286,12 +1343,12 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     iconAnimation = true
 
     # Display links to Hugo and MemE?
-    displayPoweredBy = true
+    displayPoweredBy = false
 
-    displaySiteCopyright = true
+    displaySiteCopyright = false
 
     # Custom Footer (Markdown supported)
-    customFooter = ""
+    customFooter = "Made with [Hugo](https://gohugo.io/) [MemE](https://github.com/reuixiy/hugo-theme-meme)"
 
     displayBusuanziSiteUVAndPV = false
     busuanziSiteUVText = "Site UV"
@@ -1394,7 +1451,9 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
     # Note: This requires SearchIndex
     #       output to be enabled.
 
-    enableLunrSearch = true
+    # or if dynamically loading result works, use it
+    # https://www.dreamsafari.info/
+    enableLunrSearch = false
     # Note: https://lunrjs.com/
 
 
@@ -1417,6 +1476,7 @@ fontsLink = "https://fonts.googleapis.com/css2?family=Antic+Slab&family=Libre+Fr
 
 
     ######################################
+    # TODO:
     # 404 Page
 
     fofPoster = ""

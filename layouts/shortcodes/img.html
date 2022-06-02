@@ -1,0 +1,5 @@
+{{ $source := .Get "src" }}
+{{ $isExternal := hasPrefix $source "https://"}}
+{{ $title := .Get "title" }}
+{{ $link := .Get "link" }}
+<img src="{{ if $isExternal }}{{$source}}{{else}}/images/{{$source}}{{end}}"{{if $title}} title="{{$title}}"{{end}}{{if $link}} titleLink="{{$link}}"{{end}}/>

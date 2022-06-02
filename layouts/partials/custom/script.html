@@ -1,0 +1,21 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+{{- with resources.Get "js/lazysizes.min.js" -}}
+<script src="{{ .RelPermalink }}" async=""></script>
+{{- end -}}
+
+<!-- bundle custom js -->
+{{ $scripts := (slice "js/intro-verse.js" "js/archive.js" "js/category-toc.js") }}
+{{- $processedScripts := slice ("" | resources.FromString "dummy.js") -}}
+
+{{- range $scripts -}}
+    {{- $path := printf "%s/%s" $.Lang (. | replaceRE `\.js$` "-rendered.js") -}}
+    {{- $processedScripts = union $processedScripts (slice (resources.Get . | resources.ExecuteAsTemplate $path $)) -}}
+{{- end -}}
+
+{{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme-custom.js` .Site.LanguagePrefix)) -}}
+
+{{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
+<script src="{{ $script.RelPermalink }}"></script>

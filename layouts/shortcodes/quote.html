@@ -1,0 +1,17 @@
+<!-- quotes: center blockquote or pull quote -->
+<!-- the center blockquote doesn't -->
+
+{{ $type := .Get "type" }}
+<div class="quote {{ $type }}">
+{{- if eq $type "pull" -}}
+    <aside>
+        <q>{{ .Inner }}{{- with .Get "cite" -}} <footer>–{{ . }}</footer> {{ end }}</q>
+    </aside>
+{{- else if eq $type "block" -}}
+    <blockquote>
+        <p>{{ .Inner }}</p>
+        {{- with .Get "cite" -}} <footer>–{{ . }}</footer> {{ end }}
+    </blockquote>
+{{ end }}
+</div>
+

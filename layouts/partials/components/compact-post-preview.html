@@ -1,0 +1,48 @@
+<!-- $ = page instance -->
+{{ $ := index . "$" }}
+{{ $isHome := .isHome }}
+
+<article class="content post home h-entry">
+    <div class="content-text">
+        <h5 class="post-title p-name">
+            <a href="{{ $.RelPermalink }}" class="summary-title-link home-link">{{ (partial "utils/title.html" (dict "$" $ "title" $.LinkTitle)).htmlTitle }}</a>
+        </h5>
+        {{ if $isHome }}
+            {{ partial "components/post-meta.html" (dict "$" $ "isHome" true) }}
+        {{ end }}
+        {{ partial "components/series-box.html" (dict "$" $ "isPage" false) }}
+        <summary class="summary">
+            {{ if $.Params.summary }}
+                <p class="p-summary">{{$.Params.summary}}</p>
+            {{ else }}
+                {{ partial "utils/summary.html" $ }}
+                {{ if or $.Truncated $.Params.summary }}
+                <span>...</span>
+                {{ end }}
+            {{ end }}
+        </summary>
+        {{ with $.Params.tags }}
+            {{ range $index, $tag := . }} 
+                <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                {{- $path := (urls.Parse ($tag | urlize)).Path -}}
+                {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
+                    {{- if gt $index 0 -}}
+                        {{- " " -}}
+                    {{- end -}}
+                    <a href="{{ .RelPermalink }}" rel="tag" class="preview-tag">#{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
+                {{- end -}}
+            {{ end }}
+        {{ end }}
+    </div>
+    {{ if isset $.Params "thumbnail" }}
+        {{ $source := $.Params.thumbnail }}
+        {{ $isExternal := hasPrefix $source "https://"}}
+        <div class="content-thumbnail">
+            {{ if $isExternal }}
+                <img alt="thumbnail" class="lazyload" data-src="{{$.Params.thumbnail}}">
+            {{ else }}
+                <img alt="thumbnail" src="/images/{{$.Params.thumbnail}}">
+            {{ end }} 
+        </div>
+    {{ end }}
+</article>

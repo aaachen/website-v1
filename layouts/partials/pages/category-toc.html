@@ -1,0 +1,58 @@
+{{ $.Scratch.Delete "root"}}
+<!--TODO: make root a parameter to be passed -->
+{{ $.Scratch.Set "root" "./content/books" }}
+{{ partial "utils/tree-sections.html" . }}
+{{ $pages := append (.Scratch.Get "pages") (slice "/books") }}
+{{ $sections := append (.Scratch.Get "sections") (slice "books") }}
+{{ $currentSection := lower .CurrentSection.Title }}
+<!-- mobile view -->
+<!-- Assume it's at most depth 2, with root treated as "All" category -->
+<div id="category-toc-mobile" class="post-description">
+        {{ range $index, $page := $pages }}
+             {{ $name := index $sections $index }}
+             <span class="category-toc-i {{if eq $index 0}}category_all{{else}}category_{{$name}}{{end}} {{if eq $name $currentSection}}active{{ end }}">{{if eq $index 0}}All{{else}}{{$name}}{{end}} </span> {{if ne $index (sub (len $pages) 1) }}<span>|</span>{{end}} 
+        {{ end }}
+</div>
+
+<!-- desktop view -->
+<div id="category-toc">
+    <ul class="category-toc-nav">
+        {{ range $index, $page := $pages }}
+            {{ $depth := (len (split (strings.TrimPrefix "/" $page) "/")) }}
+
+            {{ with $.Site.GetPage $page }}
+                {{ $depthPrev := 0 }}
+                {{ if ge $index 1 }}
+                    {{ $pagePrev := index $pages (sub $index 1) }}
+                    {{ $depthPrev = len (split (strings.TrimPrefix "/" $pagePrev) "/") }}
+                {{ end }}
+
+                {{ $depthNext := 0 }}
+                {{ if lt $index (sub (len $pages) 1) }}
+                    {{ $pageNext := index $pages (add $index 1) }}
+                    {{ $depthNext = len (split (strings.TrimPrefix "/" $pageNext) "/") }}
+                {{ end }}
+
+                {{ if or (le $depth $depthPrev) (eq $index 0) }}
+                    <li>
+                {{ end }}
+                {{ if and (gt $depth $depthPrev) (ne $index 0) }}
+                    <ul><li>
+                {{ end }}
+
+                {{ $name := index $sections $index }}
+                <span class="category-toc-i {{if eq $index 0}}category_all{{else}}category_{{$name}}{{end}} {{if eq $name $currentSection}}active{{ end }}">{{ $name }}</span>
+                {{ if and (gt $depth $depthNext) (ne $index (sub (len $pages) 1)) }}
+                    {{ range seq (sub $depth $depthNext) }}
+                        {{ if le . (sub $depth $depthNext) }}
+                            </li></ul>
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+                {{ if ge $depth $depthNext }}
+                    </li>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </ul>
+</div>

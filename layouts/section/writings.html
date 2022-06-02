@@ -1,0 +1,28 @@
+{{ define "main" }}
+<main class="main single compact-post" id="main">
+    <div class="main-inner">
+        <h4 class="term-title">All Writings</h4>
+        <div class="all-posts">    
+        {{ $paginateSize := 10 }}
+        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" (slice "writings")) $paginateSize }}
+        {{ range $paginator.Pages }}
+            {{ partial "components/compact-post-preview.html" (dict "$" . "isHome" true) }}
+        {{ end }}
+        {{ if or $paginator.HasPrev $paginator.HasNext }}
+            <ul class="pagination">
+                {{ if $paginator.HasPrev }}
+                    <li class="pagination-prev">
+                        <a href="{{ $paginator.Prev.URL }}" rel="prev">&lt; {{ i18n "prevPage" }}</a>
+                    </li>
+                {{ end }}
+                {{ if $paginator.HasNext }}
+                    <li class="pagination-next">
+                        <a href="{{ $paginator.Next.URL }}" rel="next">{{ i18n "nextPage" }} &gt;</a>
+                    </li>
+                {{ end }}
+            </ul>
+        {{ end }}
+        </div>
+    </div>
+</main>
+{{ end }}

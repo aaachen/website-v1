@@ -1,0 +1,3 @@
+{{ range .Site.Params.introPoetryVerses }}
+    <p>{{ range split . "" }}{{ if eq . " " }}{{ " " }}{{ else }}<span class='letter'>{{- . -}}</span>{{ end }}{{ end }}</p>
+{{ end }}

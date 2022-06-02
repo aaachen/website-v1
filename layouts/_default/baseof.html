@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}"{{ if and .Site.Params.enableDarkMode .Site.Params.overrideSystemPreferences }}{{ with .Site.Params.defaultTheme | default "light" }} data-theme="{{ . }}"{{ end }}{{ end }}>
+    {{ partial "head.html" . }} 
+    {{ $isHome := eq .Kind "home" }}
+    {{ $intro := and ($isHome) (eq .Site.Params.intro "poetry") }}
+    <body>
+        <div class="container">
+            <div id="header-container" {{ if $intro }}hidden{{ end }}>
+                {{ partial "header.html" . }}
+                {{ if ne .Site.Params.headerLayout "flex" }}
+                    {{ if or (and .IsHome .Site.Params.displayMenuInHome) (and (not .IsHome) .Site.Params.enableMenu) }}
+                        {{ partial "menu.html" . }}
+                    {{ end }}
+                    {{ partial "components/multilingual.html" . }}
+                    {{ partial "components/dark-mode.html" . }}
+                {{ end }}
+            </div>
+            {{ if $intro }}
+                <div id="intro">
+                {{ partial "custom/poetry-intro.html" . }}
+                </div>
+            {{ end }}
+            <div id="main-container" {{ if $intro }}hidden{{ end }}>
+                {{ block "main" . }}{{ end }}
+            </div>
+            <div id="footer-container" {{ if $intro }}hidden{{ end }}>
+                {{ partial "components/back-to-top.html" . }}
+                {{ partial "footer.html" . }}
+            </div>
+        </div>
+        {{ partial "components/service-worker.html" . }}
+        {{ partial "third-party/script.html" . }}
+    </body>
+</html>
+

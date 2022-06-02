@@ -1,0 +1,10 @@
+<!-- series content box for a post. Only display if is in series -->
+{{ $ := index . "$" }}
+{{ $isPage := .isPage }}
+
+{{ with $.Params.series }}
+<div class="series-meta{{if $isPage}}-page{{end}}">
+    {{ $series := $.Params.series }}
+    This entry is part in the series <a class="series-name" href="/series/{{$series}}" title="{{humanize $series}}">{{humanize $series}}</a>
+</div>
+{{ end }}

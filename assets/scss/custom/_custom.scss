@@ -1,0 +1,688 @@
+body {
+    text-rendering: optimizeLegibility
+}
+
+// Posts alignment changes (related to distance from footer, which is placed absolute)
+@if ($headerLayoutFlex) {
+    .main {
+        // original 7em
+        // this padding is defined in respect to header being fixed
+        padding-top: 6em;
+        // original 15em
+        padding-bottom: 13em;
+    }
+}
+
+/** 
+ * Main page:
+ **/
+
+// Compact the space of each post entry and left aligned
+.compact-post {
+    .home-intro {
+        padding-top: 1em;
+    }
+
+    .post .post-title.p-name {
+        text-align: left;
+        padding-left: 0.1em;
+        margin-bottom: 0.1em;
+        margin-top: 0em;
+    }
+    
+    // original post-meta margin: 1rem top and bottom
+    .post .post-meta {
+        text-align: left;
+        margin: 0.2rem 0;
+        margin-top: 0;
+    }
+    
+    .post .post-meta-item {
+        margin: 0;
+        margin-bottom: 0.3em;
+    }
+
+    .p-summary {
+        margin: 0;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        margin-left: 0.2em;
+        //color: var(--color-contrast-medium-l);
+    }
+    
+    .content-thumbnail {
+        margin: auto;
+        margin-left: 1em;
+        flex: 1 1 auto;
+        max-height: 100vh;
+        img {
+            border-radius: 8px;
+            max-width: 8em;
+            max-height: 8em;
+            float: right;
+        }
+    }
+
+    .browse-all {
+        display: flex;
+        //justify-content: space-between;
+        float: right;
+    }
+    
+    // per recent-post 
+    article.content.post {
+        margin-top: 0;
+        margin-bottom: 2em;
+        display: flex;
+    }
+    
+    article.content.post > h5 {
+        margin-top: 0em;
+    }
+    
+    .content-text {
+        flex: 1 1 auto;
+    }
+}
+[data-theme="dark"] {
+    a.home-link {
+        //color: hsl(185, 65, 60);
+        color: hsl(166,45,70);
+        &:hover {
+            //color: var(--color-primary);
+            color: alpha(var(--color-primary), 0.50);
+        }
+    }
+    .home-emoji.light {
+        display: none;
+    }
+}
+[data-theme="light"]  {
+    a.home-link {
+        // color: hsl(200, 60, 46);
+        color: var(--color-primary);
+        &:hover {
+            color: alpha(var(--color-primary), 0.60);
+        }
+    }
+    .home-emoji.dark {
+        display: none;
+    }
+}
+
+// post preview
+.preview-tag {
+    font-size: 80%;
+    color: hsla(var(--color-contrast-medium-h), var(--color-contrast-medium-s), var(--color-contrast-medium-l), 0.9);
+    display: inline-block;
+    font-family: "glyph-correction","Source Code Pro",monospace;
+    margin-right: 5px;
+}
+
+// series
+.series-meta {
+    background-color: var(--color-contrast-lower);
+    font-size: .8em;
+    // top-bottom left-right
+    padding: 7px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    transition: all $duration;
+    .series-name {
+        text-decoration: underline;
+    }
+}
+
+article.content.post .post-body.series {
+    margin-top: 2em !important;
+}
+
+.series-meta-page {
+    display: block;
+    text-align: center;
+    font-style: italic;
+
+    .series-name {
+        text-decoration: underline;
+    }
+}
+
+.series-intro {
+    text-align: center;
+}
+
+
+/** 
+ * intro animation 
+ **/
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// hide display initially
+.letter {
+    opacity: 0;
+}
+
+.delay {
+    // third field is likely transition-duration
+    animation: fadeIn ease 0.5s;
+    opacity: 0;
+    animation-fill-mode: forwards; // retain computed value (of style?) set by last keyframe (in this case, opacity: 1)
+    &.t-0 {
+      animation-delay: 0s;
+    }
+    &.t-1 {
+      animation-delay: 0.12s;
+    }
+    &.t-2 {
+      animation-delay: 0.24s;
+    }
+}
+
+// need to set higher z-index priority than header, otherwise menu is not clickable after opacity animation
+#header-container {
+    position: fixed;
+    z-index: 5;
+}
+
+.header-wrapper { 
+    padding-bottom: 0;
+}
+
+[showIntro="false"] #intro {
+    display: none;
+}
+
+#intro {
+    position: absolute;
+    font-size: 1em;
+    text-align: center;
+    width: auto;
+    // center: https://medium.com/front-end-weekly/absolute-centering-in-css-ea3a9d0ad72e
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/** 
+ * Menu: 
+ **/
+[data-theme="dark"] .box-shadow {
+    box-shadow: 0 0.4em 13px -9px #00000091;
+	padding-bottom: 5px;
+    transition: box-shadow $duration;
+}
+[data-theme="light"] .box-shadow {
+    box-shadow: 0 0.4em 10px -9px #424242d6;
+	padding-bottom: 5px;
+    transition: box-shadow $duration;
+}
+
+.menu-item {
+    margin-left: 0.8em;
+}
+
+// adjust the menu item color contrast to be high in dark mode
+[data-theme="dark"] .menu-item {
+    display: inline-block;
+    a {
+        color: var(--color-contrast-high);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+// mobile menu
+.nav-toggle span {
+    margin-top: .8em;
+}
+
+.nav {
+    // menu entry font size
+    font-size: 85%;
+}
+
+// for some reason need to re-specify this and specify data-theme. 
+// Otherwise the above change of a would render the non-specified .active a to lose effect
+[data-theme="dark"] .active {
+    a {
+        color: var(--color-primary);
+    }
+}
+
+/** 
+ * Archive
+ **/
+.archive-view-inactive {
+    display: none;
+}
+
+.archive-view-toggle {
+    padding-right: 0.1em;
+    cursor: pointer;
+}
+
+.archive-view-toggle.active {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/**
+ * Writings
+ **/
+
+.all-posts {
+    margin-top: 1em;
+}
+
+/** 
+ * Books
+ * source layout and css model: good reads - https://www.goodreads.com/explore
+ **/
+
+.shelf {
+    position: relative;
+}
+
+.shelf-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.book-item-container {
+    margin-right: 2em;
+    margin-bottom: 1em;
+    position: relative;
+    flex: 1;
+    min-width: 5em; 
+    max-width: 7em; 
+    white-space: normal;
+}
+
+.book-item {
+    display: flex;
+    min-height: 2em;
+}
+
+.book-item-click {
+    display: inline-block;
+    width: 100%;
+}
+
+.book-item-interactive {
+    text-align: left;
+}
+
+.book-author-name {
+    color: var(--color-contrast-high) !important;
+    .book-item-interactive:hover {
+        color: var(--color-contrast-high) !important; 
+    }
+}
+
+.book-item-interactive:hover {
+    .book-cover {
+        transform: scale(1.03);
+    }
+}
+
+.book-cover {
+    filter: drop-shadow(0 0.2em 0.8em rgba(0,0,0,0.2));
+    position: relative;
+    .book-cover-image {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 0 4% 4% 0/2%;
+        overflow: hidden;
+    }
+}
+[data-theme="dark"] .book-cover {
+    filter: drop-shadow(0 0.1em 0.4em rgba(0,0,0,0.2));
+}
+
+.fixed-aspect-ratio::after {
+    display: block;
+    padding-top: 150%;
+    content: "";
+}
+
+.responsive-image {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.book-content {
+    margin-top: 0.5em;
+}
+
+.book-title {
+    font-weight: 600;
+    line-height: 1.5; // heights between lines. Multiply font size by 1.5 
+}
+
+/**
+ * Post customization
+ **/
+article.content.post {
+    // originally 5em
+    .post-body {
+        margin-top: 3em !important;
+        font-size: 17px; 
+    }
+}
+
+.captionLink {
+    color: var(--color-contrast-medium)
+}
+
+/**
+ * TODO: remove this and use the mobile view
+ * category bar
+ * - desktop: side
+ * - mobile: top
+ **/
+#category-toc {
+    position: fixed;
+    box-sizing: border-box;
+    max-width: 15vw;
+    max-height: 70vh;
+    overflow: auto;
+    text-align: inherit;
+    top: 105px;
+    padding-right: 0.8em;
+    border-right: 2px solid;
+    border-color: var(--color-contrast-medium);
+}
+#category-toc-mobile {
+    display: none;
+}
+
+.category-toc-nav {
+    padding-left: 0;
+    // margin from browser default
+    margin: 0;
+    li {
+        list-style: none;
+    }
+}
+
+.category-toc-i {
+    text-transform: capitalize;
+    transition: color $duration;
+}
+.category-toc-i:hover {
+    color: var(--color-primary);
+    transition: color $duration;
+    cursor: pointer;
+}
+.active {
+    color: var(--color-primary);
+}
+
+.category-toc-i-entry {
+    display: none;
+}
+
+.category-toc-nav > li > ul {
+    text-indent: -1em;
+}
+
+
+/**
+ * Page TOC
+ **/
+.contents {
+    margin-top: 2em;
+}
+
+.sidebar {
+    display: none;
+}
+
+// display side ToC
+@media (min-width: 1220px) {
+    .old-toc {
+        display: none;
+    }
+    .new-toc {
+        //top: 50px;
+        //float: left;
+        //transform: translateX(100%);
+        position: sticky;
+        top: 100px;
+        left: 0;
+        // can adjust below for an average TOC width. Remember to adjust responsive min-width if change
+        width: 180px; 
+        line-height: 2em;
+        // wrap the words
+        word-wrap: break-word;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: block;
+        position: absolute;
+        // account for the footer height
+        height: 98%;
+        display: block;
+        transform: translateX(-100%);
+    }
+
+    .toc {
+        overflow: auto !important;
+    }
+    .toc > li > ol {
+        text-indent: -1em;
+    }
+    .toc > li > ol > li > ol {
+        text-indent: -2em;
+    }
+    .toc > li > ol > li > ol > li > ol {
+        text-indent: -3em;
+    }
+
+    ol {
+        ol {
+            display: none;
+        }
+        .has-active > ol {
+            display: block;
+        }
+
+    }
+
+    .a-active {
+        color: var(--color-primary);
+        transition: 0s !important;
+    }
+}
+
+/**
+ * Drop-cap 
+ **/
+.drop-cap:before {
+    content: "";
+    display: block;
+}
+.drop-cap:before {
+    margin-bottom: -0.175em;
+}
+.drop-cap {
+    line-height: 1;
+    font-size: 58px;
+    margin-right: 14px;
+}
+
+/**
+ * Lazy loading images
+ **/
+img.lazyloading {
+    transition: filter .2s cubic-bezier(.075,.82,.165,1);
+    filter: blur(5px);
+}
+img.lazyloaded {
+    transition: filter .2s cubic-bezier(.075,.82,.165,1);
+    filter: initial;
+}
+
+/**
+ * Custom blockquote and pull quote
+ **/
+
+.quote.pull {
+    q {
+        font-weight: 400;
+    	letter-spacing: 1.1px;
+    	font-style: normal;
+    	font-size: 1.5em;
+    	//font-size: 2.5vw;
+    	line-height: 1.4em;
+        color: var(--color-contrast-medium);
+    	float: right;
+    	max-width: 300px;
+    	// max-width: 200vw;
+        margin-left: 20px;
+        //margin-right: -15%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    
+        &:before { content: ''; }
+    	&:after { content: ''; }
+    
+        // should inherit from config
+        font-family: "glyph-correction",'EB Garamond', serif;
+    
+        footer {
+            margin-top: 0.5em;
+        }
+    }
+}
+
+.quote.block {
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+
+    blockquote {
+        // reset theme defaults
+    	margin: 0;
+    	padding: 0;
+        border-left: none;
+
+        color: var(--color-contrast-medium);
+    	position: relative;
+    	font-size: 1.3em;
+    	line-height: 1.4em;
+    	text-rendering: optimizeLegibility;
+    	font-smoothing: antialiased;
+    	-webkit-font-smoothing: antialiased;
+    	-moz-osx-font-smoothing: grayscale;
+
+        p {
+            line-height: 1.4em;
+        }
+
+        p:first-of-type:before {
+    	    content: '\201c';
+    	    position: absolute;
+    	    left: -.5em;
+        }
+
+        p:last-of-type:after {
+            content: '\201d';
+            position: absolute;
+        }
+
+        footer {
+    	    position: relative;
+        }
+    }
+}
+
+/**
+ * Responsive settings 
+ **/
+
+// when no side margin is available
+@media only screen and (max-width: $maxWidth) {
+    body {
+        font-size: 16px;
+    }
+    .main {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    article.content.post {
+        .post-body {
+            font-size: 16px;
+        }
+    }
+}
+
+// when no space available for side contents
+@media only screen and (max-width: 1084px) {
+    #category-toc {
+        display: none;
+    }
+    #category-toc-mobile {
+        display: block;
+    }
+}
+
+// when shrink to mobile width
+@media only screen and (max-width: 660px) {
+    .compact-post {
+        .post-title {
+            font-size: 1.1em;
+        }
+        .content-thumbnail {
+            //margin: 0;
+            img {
+                margin: 0;
+                max-width: 6em;
+                max-height: 6em;
+            }
+        }
+        .summary {
+            display: none;
+        }
+        .series-meta {
+            display: none;
+        }
+    }
+    .book-item-container {
+        min-width: 4em; 
+        max-width: 6em; 
+    }
+    .post p {
+        line-height: 1.8;
+    }
+    #intro {
+        font-size: 0.9em;
+        width: 90%;
+    }
+    .drop-cap {
+        font-size: 48px;
+        margin-right: 12px;
+    }
+    .main {
+        padding-left: 1.3em;
+        padding-right: 1.3em;
+    }
+}
+
