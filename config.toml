@@ -2,7 +2,7 @@
 # Site Settings
 
 
-baseURL = "axyc.me"
+baseURL = "https://axyc.me/"
 title = "axyc.me"
 languageCode = "en"
 hasCJKLanguage = false
@@ -44,7 +44,7 @@ paginate = 10
 
 # URL related
 disablePathToLower = false
-relativeURLs = false
+relativeURLs = true
 uglyURLs = false
 
 # URL structure
@@ -110,7 +110,7 @@ uglyURLs = false
     # Avatar
     avatar = "/icons/apple-touch-icon.png"
     # Personal website, default: baseURL
-    website = "axyc.me"
+    website = "https://axyc.me/"
     # Twitter
     twitter = "none"
 

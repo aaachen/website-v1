@@ -18,4 +18,4 @@
 {{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme-custom.js` .Site.LanguagePrefix)) -}}
 
 {{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
-<script src="{{ $script.RelPermalink }}"></script>
+<script type="text/javascript" src="{{ $script.RelPermalink }}"></script>
