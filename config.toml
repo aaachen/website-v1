@@ -1362,7 +1362,8 @@ uglyURLs = false
     #       https://busuanzi.ibruce.info/
 
     # Socials
-    enableSocials = true
+    # Note: can move social to somewhere other than footer
+    enableSocials = false
     # Note: see data/Socials.toml
 
 

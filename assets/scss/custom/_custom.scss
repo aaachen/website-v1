@@ -2,6 +2,27 @@ body {
     text-rendering: optimizeLegibility
 }
 
+/**
+ * Basic layouts
+ */
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+/**
+ * Main
+ */
 // Posts alignment changes (related to distance from footer, which is placed absolute)
 @if ($headerLayoutFlex) {
     .main {
@@ -14,13 +35,14 @@ body {
 }
 
 /** 
- * Main page:
+ * Home
  **/
 
 // Compact the space of each post entry and left aligned
 .compact-post {
     .home-intro {
         padding-top: 1em;
+        text-align: center;
     }
 
     .post .post-title.p-name {

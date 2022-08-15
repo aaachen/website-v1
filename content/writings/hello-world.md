@@ -4,7 +4,7 @@ date: 2022-07-02T02:26:18-07:00
 tags: [blog]
 categories: [blog]
 toc: true
-summary: "what dis site is aboute"
+summary: "why am I here"
 meta: true
 ---
 
@@ -12,7 +12,7 @@ meta: true
 console.log("Hello world");
 ```
 
-## What is this site about?
+## What dis site about?
 
 **TLDR:**
 1. space to organize and cleanup my thoughts (currently with religion)
