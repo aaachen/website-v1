@@ -1429,7 +1429,8 @@ uglyURLs = false
     ######################################
     # Smooth Scroll
 
-    enableSmoothScroll = true
+    #enableSmoothScroll = true
+    enableSmoothScroll = false
 
 
     ######################################
