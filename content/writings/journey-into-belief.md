@@ -2,7 +2,6 @@
 title: "Journey into belief"
 date: 2022-08-14T22:04:21-07:00
 tags: [personal story]
-series: "lost-years-of-college"
 meta: true
 summary: "Genesis"
 ---

@@ -1,0 +1,9 @@
+<!-- previous backreference, if any. This is a bandage UI of series since I haven't started on any -->
+{{ $ := index . "$" }}
+
+{{ with $.Params.previous }}
+<div class="series-meta-page">
+    {{ $previous := $.Params.previous }}
+    This post is a continuation of <a class="series-name" href="/writings/{{$previous}}">{{humanize $previous}}</a>
+</div>
+{{ end }}

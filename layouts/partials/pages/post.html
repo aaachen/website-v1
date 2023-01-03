@@ -46,8 +46,10 @@
                 </div>
             {{- end -}}
 
-            <div class="post-body e-content{{ with .Params.series }} series{{ end }}">
-                {{ partial "components/series-box.html" (dict "$" . "isPage" true) }}
+            <div class="post-body e-content{{ with .Params.previous }} series{{ end }}">
+                <!-- TODO: combine this with series -->
+                {{ partial "components/previous-box.html" (dict "$" .) }}
+                <!-- {{ partial "components/series-box.html" (dict "$" . "isPage" true) }} -->
                 {{ partial "utils/content.html" . }}
             </div>
 

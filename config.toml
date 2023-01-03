@@ -220,12 +220,12 @@ uglyURLs = false
         weight = 1
         pre = "internal"
         post = ""
-    [[menu.main]]
-        pageref = "/books/"
-        name = "Books"
-        weight = 3
-        pre = "internal"
-        post = ""
+    #[[menu.main]]
+    #    pageref = "/books/"
+    #    name = "Books"
+    #    weight = 3
+    #    pre = "internal"
+    #    post = ""
     # TODO: maybe remove this
     #[[menu.main]]
     #    pageref = "/thoughts/"
