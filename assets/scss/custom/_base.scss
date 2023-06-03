@@ -2,6 +2,8 @@ body {
     text-rendering: optimizeLegibility
 }
 
+// Default font size
+
 /**
  * Basic layouts
  */
@@ -23,6 +25,7 @@ body {
 /**
  * Main container
  */
+
 // Posts alignment changes (related to distance from footer, which is placed absolute)
 @if ($headerLayoutFlex) {
     .main {

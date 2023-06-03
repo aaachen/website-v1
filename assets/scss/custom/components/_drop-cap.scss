@@ -1,0 +1,22 @@
+/**
+ * Drop-cap 
+ **/
+.drop-cap:before {
+    content: "";
+    display: block;
+}
+.drop-cap:before {
+    margin-bottom: -0.175em;
+}
+.drop-cap {
+    line-height: 1;
+    font-size: 58px;
+    margin-right: 14px;
+}
+
+@media only screen and (max-width: 660px) {
+    .drop-cap {
+        font-size: 48px;
+        margin-right: 12px;
+    }
+}
