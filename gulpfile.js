@@ -19,4 +19,3 @@ gulp.task('generate-service-worker', () => {
 });
 
 gulp.task("build", gulp.series("hugo-build", "generate-service-worker"));
-

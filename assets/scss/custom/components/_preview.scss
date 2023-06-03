@@ -1,0 +1,57 @@
+
+/**
+ * Post preview (in Home)
+ **/
+
+.preview-tag {
+    font-size: 80%;
+    color: hsla(var(--color-contrast-medium-h), var(--color-contrast-medium-s), var(--color-contrast-medium-l), 0.9);
+    display: inline-block;
+    font-family: "glyph-correction","Source Code Pro",monospace;
+    margin-right: 5px;
+}
+
+/**
+ * Footnote preview
+ **/
+
+[data-theme="dark"] {
+    #footnotediv {
+        border-color: #283141 !important;
+        background: #11161f !important;
+        border: 2px solid #f0f2f5;
+        background: #fff;
+
+        .footnote-wrap {
+            color: #acb1bf;
+        }
+    }
+}
+
+[data-theme="light"] {
+    #footnotediv {
+        background: var(--color-bg);
+        border: 2px solid #f0f2f5;
+
+        .footnote-wrap {
+            color: var(--color-contrast-hight);
+        }
+    }
+}
+
+#footnotediv {
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.1),0 4px 10px 0 rgba(0,0,0,.15);
+    position: absolute;
+    z-index: 99;
+    opacity: 1;
+    width: 22em;
+    border-radius: 8px;
+    font-weight: 400;
+
+    .footnote-wrap {
+        padding: .5rem 1.15rem;
+        font-size: .95rem;
+        font-weight: 500;
+        line-height: 1.55;
+    }
+}

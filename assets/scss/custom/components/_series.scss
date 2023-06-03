@@ -1,0 +1,32 @@
+// series
+.series-meta {
+    background-color: var(--color-contrast-lower);
+    font-size: .8em;
+    // top-bottom left-right
+    padding: 7px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    transition: all $duration;
+    .series-name {
+        text-decoration: underline;
+    }
+}
+
+article.content.post .post-body.series {
+    margin-top: 2em !important;
+}
+
+.series-meta-page {
+    display: block;
+    text-align: center;
+    font-style: italic;
+
+    .series-name {
+        text-decoration: underline;
+    }
+}
+
+.series-intro {
+    text-align: center;
+}

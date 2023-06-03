@@ -1,0 +1,12 @@
+/**
+ * Lazy loading images
+ **/
+
+img.lazyloading {
+    transition: filter .2s cubic-bezier(.075,.82,.165,1);
+    filter: blur(5px);
+}
+img.lazyloaded {
+    transition: filter .2s cubic-bezier(.075,.82,.165,1);
+    filter: initial;
+}

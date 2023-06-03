@@ -1,0 +1,63 @@
+/**
+ * Post customization
+ **/
+article.content.post {
+    // originally 5em
+    .post-body {
+        margin-top: 3em !important;
+        font-size: 17px; 
+    }
+}
+
+.captionLink {
+    color: var(--color-contrast-medium)
+}
+
+[data-theme="dark"] {
+    .post-body a {
+        text-decoration: none;
+        color: var(--color-primary);
+        &:hover {
+            color: alpha(var(--color-primary), 0.50);
+        }
+    }
+    .post-body a.captionLink {
+        text-decoration: underline;
+    }
+}
+[data-theme="light"] {
+    .post-body a {
+        text-decoration: none;
+        color: var(--color-primary-darker);
+        &:hover {
+            color: alpha(var(--color-primary-darker), 0.60);
+        }
+    }
+    .post-body a.captionLink {
+        text-decoration: underline;
+    }
+}
+
+/**
+ * Writings
+ **/
+
+.all-posts {
+    margin-top: 1em;
+}
+
+// when no side margin is available
+@media only screen and (max-width: $maxWidth) {
+    article.content.post {
+        .post-body {
+            font-size: 16px;
+        }
+    }
+}
+
+// when shrink to mobile width
+@media only screen and (max-width: 660px) {
+    .post p {
+        line-height: 1.8;
+    }
+}

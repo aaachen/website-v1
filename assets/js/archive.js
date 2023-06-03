@@ -3,7 +3,6 @@ const archiveViewPrefix = "ar-v"
 const viewName2Id = {
     date: 'ar-v1',
     tags: 'ar-v2',
-    categories: 'ar-v3',
     series: 'ar-v4'
 }
 const archiveSelectedKey = "selected";

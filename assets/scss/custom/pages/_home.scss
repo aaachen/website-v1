@@ -1,0 +1,129 @@
+/** 
+ * Home
+ **/
+
+.header-wrapper { 
+    padding-bottom: 0;
+}
+
+
+/**
+ * Displaying the recent posts compactly
+ */
+
+// Compact the space of each post entry and left aligned
+.compact-post {
+    .home-intro {
+        padding-top: 1em;
+        text-align: center;
+    }
+
+    .post .post-title.p-name {
+        text-align: left;
+        padding-left: 0.1em;
+        margin-bottom: 0.1em;
+        margin-top: 0em;
+    }
+    
+    // original post-meta margin: 1rem top and bottom
+    .post .post-meta {
+        text-align: left;
+        margin: 0.2rem 0;
+        margin-top: 0;
+    }
+    
+    .post .post-meta-item {
+        margin: 0;
+        margin-bottom: 0.3em;
+    }
+
+    .p-summary {
+        margin: 0;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        margin-left: 0.2em;
+        //color: var(--color-contrast-medium-l);
+    }
+    
+    .content-thumbnail {
+        margin: auto;
+        margin-left: 1em;
+        flex: 1 1 auto;
+        max-height: 100vh;
+        img {
+            border-radius: 8px;
+            max-width: 8em;
+            max-height: 8em;
+            float: right;
+        }
+    }
+
+    .browse-all {
+        display: flex;
+        //justify-content: space-between;
+        float: right;
+    }
+    
+    // per recent-post 
+    article.content.post {
+        margin-top: 0;
+        margin-bottom: 2em;
+        display: flex;
+    }
+    
+    article.content.post > h5 {
+        margin-top: 0em;
+    }
+    
+    .content-text {
+        flex: 1 1 auto;
+    }
+}
+[data-theme="dark"] {
+    a.home-link {
+        //color: hsl(185, 65, 60);
+        color: hsl(166,45,70);
+        &:hover {
+            //color: var(--color-primary);
+            color: alpha(var(--color-primary), 0.50);
+        }
+    }
+    .home-emoji.light {
+        display: none;
+    }
+}
+[data-theme="light"]  {
+    a.home-link {
+        // color: hsl(200, 60, 46);
+        color: var(--color-primary);
+        &:hover {
+            color: alpha(var(--color-primary), 0.60);
+        }
+    }
+    .home-emoji.dark {
+        display: none;
+    }
+}
+
+// when shrink to mobile width
+@media only screen and (max-width: 660px) {
+    .compact-post {
+        .post-title {
+            font-size: 1.1em;
+        }
+        .content-thumbnail {
+            //margin: 0;
+            img {
+                margin: 0;
+                max-width: 6em;
+                max-height: 6em;
+            }
+        }
+        .summary {
+            display: none;
+        }
+        .series-meta {
+            display: none;
+        }
+    }
+}

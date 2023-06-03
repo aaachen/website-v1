@@ -1,0 +1,46 @@
+/** 
+ * Menu: 
+ **/
+[data-theme="dark"] .box-shadow {
+    box-shadow: 0 0.4em 13px -9px #00000091;
+	padding-bottom: 5px;
+    transition: box-shadow $duration;
+}
+[data-theme="light"] .box-shadow {
+    box-shadow: 0 0.4em 10px -9px #424242d6;
+	padding-bottom: 5px;
+    transition: box-shadow $duration;
+}
+
+.menu-item {
+    margin-left: 0.8em;
+}
+
+// adjust the menu item color contrast to be high in dark mode
+[data-theme="dark"] .menu-item {
+    display: inline-block;
+    a {
+        color: var(--color-contrast-high);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+// mobile menu
+.nav-toggle span {
+    margin-top: .8em;
+}
+
+.nav {
+    // menu entry font size
+    font-size: 85%;
+}
+
+// for some reason need to re-specify this and specify data-theme. 
+// Otherwise the above change of a would render the non-specified .active a to lose effect
+[data-theme="dark"] .active {
+    a {
+        color: var(--color-primary);
+    }
+}

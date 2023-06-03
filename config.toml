@@ -220,19 +220,6 @@ uglyURLs = false
         weight = 1
         pre = "internal"
         post = ""
-    #[[menu.main]]
-    #    pageref = "/books/"
-    #    name = "Books"
-    #    weight = 3
-    #    pre = "internal"
-    #    post = ""
-    # TODO: maybe remove this
-    #[[menu.main]]
-    #    pageref = "/thoughts/"
-    #    name = "Thoughts"
-    #    weight = 4
-    #    pre = "internal"
-    #    post = ""
     [[menu.main]]
         pageref = "/archive/"
         name = "Archive"
@@ -248,10 +235,6 @@ uglyURLs = false
     [[menu.main]]
         weight = 7
         identifier = "theme-switcher"
-    #[[menu.main]]
-    #    weight = 6
-    #    identifier = "lang-switcher"
-    # see lunr search
     #[[menu.main]]
     #    weight = 7
     #    identifier = "search"

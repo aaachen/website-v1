@@ -1,0 +1,129 @@
+/**
+ * TODO: remove this and use the mobile view
+ * category bar
+ * - desktop: side
+ * - mobile: top
+ **/
+#category-toc {
+    position: fixed;
+    box-sizing: border-box;
+    max-width: 15vw;
+    max-height: 70vh;
+    overflow: auto;
+    text-align: inherit;
+    top: 105px;
+    padding-right: 0.8em;
+    border-right: 2px solid;
+    border-color: var(--color-contrast-medium);
+}
+#category-toc-mobile {
+    display: none;
+}
+
+.category-toc-nav {
+    padding-left: 0;
+    // margin from browser default
+    margin: 0;
+    li {
+        list-style: none;
+    }
+}
+
+.category-toc-i {
+    text-transform: capitalize;
+    transition: color $duration;
+}
+.category-toc-i:hover {
+    color: var(--color-primary);
+    transition: color $duration;
+    cursor: pointer;
+}
+.active {
+    color: var(--color-primary);
+}
+
+.category-toc-i-entry {
+    display: none;
+}
+
+.category-toc-nav > li > ul {
+    text-indent: -1em;
+}
+
+// when no space available for side contents
+@media only screen and (max-width: 1084px) {
+    #category-toc {
+        display: none;
+    }
+    #category-toc-mobile {
+        display: block;
+    }
+}
+
+/**
+ * Page TOC
+ **/
+.contents {
+    margin-top: 2em;
+}
+
+.sidebar {
+    display: none;
+}
+
+// display side ToC
+@media (min-width: 1220px) {
+    .old-toc {
+        display: none;
+    }
+    .new-toc {
+        //top: 50px;
+        //float: left;
+        //transform: translateX(100%);
+        position: sticky;
+        top: 100px;
+        left: 0;
+        // can adjust below for an average TOC width. Remember to adjust responsive min-width if change
+        width: 180px; 
+        line-height: 2em;
+        // wrap the words
+        word-wrap: break-word;
+        box-sizing: border-box;
+    }
+    .sidebar {
+        display: block;
+        position: absolute;
+        // account for the footer height
+        height: 98%;
+        display: block;
+        transform: translateX(-100%);
+    }
+
+    .toc {
+        overflow: auto !important;
+    }
+    .toc > li > ol {
+        text-indent: -1em;
+    }
+    .toc > li > ol > li > ol {
+        text-indent: -2em;
+    }
+    .toc > li > ol > li > ol > li > ol {
+        text-indent: -3em;
+    }
+
+    ol {
+        ol {
+            display: none;
+        }
+        .has-active > ol {
+            display: block;
+        }
+
+    }
+
+    .a-active {
+        color: var(--color-primary);
+        transition: 0s !important;
+    }
+}

@@ -5,6 +5,7 @@
 @mixin dark-theme {
     --theme-name: "dark";
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
+    @include defineColorHSL(--color-primary-darker, $primaryColorLightH, $primaryColorLightS, $primaryColorLightL - 3);
     @include defineColorHSL(--color-bg, 231, 14%, 15%);
     @include defineColorHSL(--color-contrast-lower, 230, 12%, 18%);
     @include defineColorHSL(--color-contrast-low, 240, 2%, 37%);

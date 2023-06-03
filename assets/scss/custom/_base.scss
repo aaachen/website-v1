@@ -1,0 +1,54 @@
+body {
+    text-rendering: optimizeLegibility
+}
+
+/**
+ * Basic layouts
+ */
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+/**
+ * Main container
+ */
+// Posts alignment changes (related to distance from footer, which is placed absolute)
+@if ($headerLayoutFlex) {
+    .main {
+        // original 7em
+        // this padding is defined in respect to header being fixed
+        padding-top: 6em;
+        // original 15em
+        padding-bottom: 11em;
+    }
+}
+
+// when no side margin is available
+@media only screen and (max-width: $maxWidth) {
+    body {
+        font-size: 16px;
+    }
+    .main {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+}
+
+// when shrink to mobile width
+@media only screen and (max-width: 660px) {
+    .main {
+        padding-left: 1.3em;
+        padding-right: 1.3em;
+    }
+}

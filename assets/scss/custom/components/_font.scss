@@ -1,0 +1,96 @@
+/**
+ * Drop-cap 
+ **/
+.drop-cap:before {
+    content: "";
+    display: block;
+}
+.drop-cap:before {
+    margin-bottom: -0.175em;
+}
+.drop-cap {
+    line-height: 1;
+    font-size: 58px;
+    margin-right: 14px;
+}
+
+/**
+ * Custom blockquote and pull quote
+ **/
+
+.quote.pull {
+    q {
+        font-weight: 400;
+    	letter-spacing: 1.1px;
+    	font-style: normal;
+    	font-size: 1.5em;
+    	//font-size: 2.5vw;
+    	line-height: 1.4em;
+        color: var(--color-contrast-medium);
+    	float: right;
+    	max-width: 300px;
+    	// max-width: 200vw;
+        margin-left: 20px;
+        //margin-right: -15%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    
+        &:before { content: ''; }
+    	&:after { content: ''; }
+    
+        // should inherit from config
+        font-family: "glyph-correction",'EB Garamond', serif;
+    
+        footer {
+            margin-top: 0.5em;
+        }
+    }
+}
+
+.quote.block {
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+
+    blockquote {
+        // reset theme defaults
+    	margin: 0;
+    	padding: 0;
+        border-left: none;
+
+        color: var(--color-contrast-medium);
+    	position: relative;
+    	font-size: 1.3em;
+    	line-height: 1.4em;
+    	text-rendering: optimizeLegibility;
+    	font-smoothing: antialiased;
+    	-webkit-font-smoothing: antialiased;
+    	-moz-osx-font-smoothing: grayscale;
+
+        p {
+            line-height: 1.4em;
+        }
+
+        p:first-of-type:before {
+    	    content: '\201c';
+    	    position: absolute;
+    	    left: -.5em;
+        }
+
+        p:last-of-type:after {
+            content: '\201d';
+            position: absolute;
+        }
+
+        footer {
+    	    position: relative;
+        }
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .drop-cap {
+        font-size: 48px;
+        margin-right: 12px;
+    }
+}

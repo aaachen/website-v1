@@ -6,8 +6,6 @@
             <div class="post-description"> 
                 <span class="archive-view-toggle ar-v1">date</span>
                 <span class="archive-view-toggle ar-v2">tags</span>
-                <span class="archive-view-toggle ar-v3">categories</span>
-                <!--<span class="archive-view-toggle ar-v4">series</span>-->
             </div>
             <div id="ar-v1" class="list-group archive-view-inactive">
                 {{ partial "pages/archive-date.html" . }}
@@ -15,12 +13,6 @@
             <div id="ar-v2" class="archive-view-inactive">
                 {{ partial "pages/archive-tags.html" . }}
             </div>
-            <div id="ar-v3" class="categories archive-view-inactive">
-                {{ partial "pages/archive-category-tree.html" . }}    
-            </div>
-            <!--<div id="ar-v4" class="series archive-view-inactive">
-                {{ partial "pages/archive-series.html" . }}    
-            </div>-->
         </div>
     </div>
 </main>

@@ -1,0 +1,16 @@
+/** 
+ * Archive
+ **/
+.archive-view-inactive {
+    display: none;
+}
+
+.archive-view-toggle {
+    padding-right: 0.1em;
+    cursor: pointer;
+}
+
+.archive-view-toggle.active {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
