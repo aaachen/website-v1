@@ -4,7 +4,7 @@
         <h4 class="term-title">All Writings</h4>
         <div class="all-posts">    
         {{ $paginateSize := 10 }}
-        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" (slice "writings")) $paginateSize }}
+        {{ $paginator := .Paginate (where (where .Site.RegularPages "Section" "in" (slice "writings")) ".Type" "writings") $paginateSize }}
         {{ range $paginator.Pages }}
             {{ partial "components/compact-post-preview.html" (dict "$" . "isHome" true) }}
         {{ end }}

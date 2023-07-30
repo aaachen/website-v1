@@ -1,0 +1,27 @@
+<!-- Change previous ('<') to pages that are older, Next ('>') to pages that are more recent -->
+{{ if and .Site.Params.enablePostNav (in .Site.Params.mainSections .Section) }}
+    {{ .Scratch.Set "prev" .PrevInSection }}
+    {{ .Scratch.Set "next" .NextInSection }}
+    {{ $prev := .Scratch.Get "prev" }}
+    {{ $next := .Scratch.Get "next" }}
+    {{ if or $prev $next }}
+        <ul class="post-nav">
+            {{ if and ($prev) (eq $prev.Type "writings") }}
+                <li class="post-nav-prev">
+                    <a href="{{ $prev.RelPermalink }}" rel="prev">&lt; {{ (partial "utils/title.html" (dict "$" $prev "title" $prev.LinkTitle)).htmlTitle }}</a>
+                </li>
+            {{ end }}
+            {{ if and ($next) (eq $next.Type "writings") }}
+                <li class="post-nav-next">
+                    <a href="{{ $next.RelPermalink }}" rel="next">{{ (partial "utils/title.html" (dict "$" $next "title" $next.LinkTitle)).htmlTitle }} &gt;</a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+{{ end }}
+
+<!-- Original comment in config... -->
+<!-- Note: In MemE, it is designed from a spatial perspective rather than a 
+    time perspective like most other themes do. Therefore, you will get a
+    newer post if you click prev on the left; you will get an older post if you 
+    click next on the right. -->

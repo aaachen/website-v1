@@ -1,12 +1,12 @@
-<!-- customization: sideway toc, series -->
+<!-- Customization changes: sideway toc, series -->
 <main class="main single" id="main">
     {{ $enableToc := .Params.toc | default .Site.Params.enableTOC -}}
     {{- if $enableToc -}}
-        <div class="sidebar">
-            <div class="new-toc">
-                {{- partial "utils/toc.html" . -}}
-            </div>
+    <div id="sidebar">
+        <div class="new-toc-wrapper">
+            {{- partial "utils/toc.html" . -}}
         </div>
+    </div>
     {{- end -}}
 
     <div class="main-inner">
@@ -41,7 +41,7 @@
 
             {{ $showMobileToc := .Params.showMobileToc | default $enableToc -}}
             {{- if (and $enableToc $showMobileToc) -}}
-                <div class="old-toc">
+                <div class="old-toc-wrapper">
                     {{- partial "utils/toc.html" . -}}
                 </div>
             {{- end -}}

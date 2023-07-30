@@ -1,6 +1,10 @@
 /** 
- * Menu: 
+ * Menu and Header 
  **/
+.header {
+    transition: top 0.15s ease-in-out;
+} 
+
 [data-theme="dark"] .box-shadow {
     box-shadow: 0 0.4em 13px -9px #00000091;
 	padding-bottom: 5px;

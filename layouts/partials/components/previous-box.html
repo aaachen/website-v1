@@ -3,7 +3,9 @@
 
 {{ with $.Params.previous }}
 <div class="series-meta-page">
-    {{ $previous := $.Params.previous }}
-    This post is a continuation of <a class="series-name" href="/writings/{{$previous}}">{{humanize $previous}}</a>
+    <!-- {{ $previous := $.Params.previous }}
+    This post is a continuation of <a class="series-name" href="/writings/{{$previous}}">{{humanize $previous}}</a> -->
+    {{ $prev := $.PrevInSection }}
+    This post is a continuation of <a class="series-name" href="{{ $prev.RelPermalink }}" rel="prev">{{ (partial "utils/title.html" (dict "$" $prev "title" $prev.LinkTitle)).htmlTitle }}</a>
 </div>
 {{ end }}

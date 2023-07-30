@@ -6,7 +6,7 @@
             <span class="home-emoji light">{{ partial "utils/markdownify.html" (dict "$" . "raw" ":sunrise:" "isContent" false) }}</span>
         </div>
         <h4 class="term-title">Recent Writings:</h4>
-        {{ range (where .Site.RegularPages "Section" "in" (slice "writings") | first 3) }}
+        {{ range (where (where .Site.RegularPages "Section" "in" (slice "writings")) ".Type" "writings" | first 3) }}
             {{ partial "components/compact-post-preview.html" (dict "$" . "isHome" true)}}
         {{ end }}
         <div class="browse-all">

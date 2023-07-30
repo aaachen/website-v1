@@ -1,4 +1,3 @@
-<!--Customization: reduce header size -->
 {{- $toc := .TableOfContents -}}
 
 <!-- Change TOC Attribute -->
@@ -14,6 +13,7 @@
 <!-- Inject TOC Title -->
 {{- if .Site.Params.displayTOCTitle -}}
     {{- $regexPatternTOC := `(<nav class="contents">\n.+)(<(ol|ul) class="toc">)` -}}
+    <!--Customization: reduce header size -->
     {{- $regexReplacementTOC := (printf `$1<h4 id="contents" class="contents-title">%s</h4>$2` (i18n "tocTitle")) -}}
     {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
 {{- end -}}

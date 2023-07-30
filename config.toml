@@ -1,7 +1,6 @@
 ##########################################
 # Site Settings
 
-
 baseURL = "https://axyc.me/"
 title = "axyc.me"
 languageCode = "en"
@@ -170,8 +169,6 @@ uglyURLs = false
 [services.rss]
     limit = -1
 
-
-
 ##########################################
 # Menu Settings
 
@@ -252,7 +249,7 @@ uglyURLs = false
     # Note: center or flex
     headerLayout = "flex"
 
-    enableHeaderAutoHide = false
+    enableHeaderAutoHide = true
     # Note: works for header layout flex only
 
     displayHeaderInHome = true
@@ -313,7 +310,6 @@ uglyURLs = false
     #       also if that post’s section is
     #       the `url` of that menu item
 
-
     ######################################
     # Homepage Layout
 
@@ -356,7 +352,6 @@ uglyURLs = false
     homeDescription = ""
     homeKeywords = ""
     homeLinksDelimiter = ""
-
 
     ######################################
     # Site Info
@@ -420,7 +415,6 @@ uglyURLs = false
     #            `content/categories/_index.md`
     #            file by yourself.
 
-
     ######################################
     # Categories Page
 
@@ -442,7 +436,6 @@ uglyURLs = false
     # category/section.
     limitPostsLimit = -1
 
-
     ######################################
     # Tags Page
 
@@ -452,12 +445,12 @@ uglyURLs = false
     largestFontSize = 2.5
     smallestFontSize = 1
 
-
     ######################################
     # List Page
 
     # listWidth = 42
     listWidth = 45
+    # listWidth = 50
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -742,12 +735,10 @@ uglyURLs = false
 
     trackingID = ""
 
-
     ######################################
     # Google Site Verification
 
     googleSiteVerification = ""
-
 
     ######################################
     # Google AdSense
@@ -774,7 +765,6 @@ uglyURLs = false
 
     yandexMetrikaId = ""
 
-
     ######################################
     # Post Settings
 
@@ -784,26 +774,31 @@ uglyURLs = false
     # default: 0.5s
     duration = 0.4
 
-    # Primary color of light mode
+    ## Primary color of light mode
     # blue
-    #primaryColorLight = "220, 90%, 56%"
-    primaryColorLight = "179, 63%, 40%"
+    # primaryColorLight = "220, 90%, 56%"
 
+    # green
+    primaryColorLight = "159, 63%, 45%"
 
-    # Primary color of dark mode
+    ## Primary color of dark mode
     # blue
     # primaryColorDark = "201, 65%, 62%"
 
     # green
-    primaryColorDark = "166, 95%, 70%"
+    # https://mycolor.space/?hex=%2321232C&sub=1
+    primaryColorDark = "160, 79%, 65%"
 
     # gold
-    #primaryColorDark = "46, 65%, 82%"
+    # primaryColorDark = "46, 65%, 82%"
+
     # ATTENTION: only HSL color values ​​are
     #            supported
 
     # The content width of the post
     postWidth = 45
+    # postWidth = 50
+
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -818,11 +813,9 @@ uglyURLs = false
     #       `original` in post’s Front Matter
     #       has a higher priority than here
 
-
     ######################################
     # Post Description
     displayPostDescription = true
-
 
     ######################################
     # Post Meta Info
@@ -874,7 +867,6 @@ uglyURLs = false
     # Open external links in a new tab?
     hrefTargetBlank = true
 
-
     ######################################
     # Table of Contents
 
@@ -891,8 +883,7 @@ uglyURLs = false
     #       `tocNum` in post’s Front Matter
     #       has a higher priority than here
 
-    linkHeadingsToTOC = true
-
+    linkHeadingsToTOC = false
 
     ######################################
     # Headings Anchor
@@ -921,14 +912,12 @@ uglyURLs = false
 
     enableAnchorAutoHide = true
 
-
     ######################################
     # Caption
 
     enableCaption = true
 
     captionPrefix = "◎ "
-
 
     ######################################
     # Image Hosting
@@ -949,7 +938,6 @@ uglyURLs = false
     # head meta also?
     headAlso = false
 
-
     ######################################
     # Video Hosting
 
@@ -966,7 +954,6 @@ uglyURLs = false
     enableVideoHost = false
 
     videoHostURL = "https://example.com/"
-
 
     ######################################
     # Footnotes
@@ -995,11 +982,9 @@ uglyURLs = false
     #       the content from the footnote
     #       in the Markdown file.
 
-
     ######################################
     # Scrollbar
     customizeScrollbar = true
-
 
     ######################################
     # Typography
@@ -1025,7 +1010,6 @@ uglyURLs = false
     fontFamilyMenu = "'Source Sans Pro', sans-serif"
 
     # Post title, post subtitle, list title, year and month title of the list, related posts title, previous/next post title, header of table, term/name in a definition list
-    #fontFamilyTitle = "'Vesper Libre', serif"
     fontFamilyTitle = "'Philosopher', sans-serif"
 
     # Headings, toc title
@@ -1033,22 +1017,26 @@ uglyURLs = false
 
     # Code, superscript, post meta info, post updated badge, post gitinfo, minimal footer, busuanzi site view counter
     fontFamilyCode = "'Source Code Pro', monospace"
+
     # Blockquotes
     fontFamilyQuote = "'EB Garamond', serif"
+
     # Table of contents
     fontFamilyTOC = ""
+
     # Caption
     fontFamilyCaption = ""
+
     # Footer
     fontFamilyFooter = "'Lora', serif"
+
     # Body
-    #fontFamilyBody = "'Tiro Devanagari Sanskrit', serif"
     fontFamilyBody = "'Lora', serif"
 
     # Embed fonts link
-    fontsLink = "https://fonts.googleapis.com/css2?family=EB+Garamond&family=Liu+Jian+Mao+Cao&family=Lora&family=Open+Sans:wght@500&family=Philosopher&family=Source+Code+Pro&family=Source+Sans+Pro&family=Vesper+Libre&display=swap"
+    fontsLink = "https://fonts.googleapis.com/css2?family=EB+Garamond&family=Liu+Jian+Mao+Cao&family=Lora&family=Philosopher&family=Source+Code+Pro&family=Source+Sans+Pro&display=swap"
+    # TODO: optimize the load speed by loading fonts when required
 
-    #fontsLink = ""
     # Note: In order for the reader to
     #       experience the fonts you set,
     #       it is best to use web fonts.
@@ -1067,7 +1055,6 @@ uglyURLs = false
 
     ######################################
     ## Tab Size
-
     tabSize = 4
 
     ######################################
@@ -1257,22 +1244,7 @@ uglyURLs = false
     ######################################
     # Previous/Next Post
 
-    # Note: In MemE, it is designed from a
-    #       spatial perspective rather
-    #       than a time perspective like
-    #       most other themes do.
-    #       Therefore, you will get a
-    #       newer post if you click prev
-    #       on the left; you will get an
-    #       older post if you click next
-    #       on the right.
-
     enablePostNav = true
-
-    # Apply to posts that below the same
-    # top level section only?
-    postNavInSection = true
-
 
     ######################################
     # Minimal Footer

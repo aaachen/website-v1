@@ -7,7 +7,7 @@
 {{- end -}}
 
 <!-- bundle custom js -->
-{{ $scripts := (slice "js/intro-verse.js" "js/archive.js" "js/category-toc.js" "js/footer-preview.js") }}
+{{ $scripts := (slice "js/intro-verse.js" "js/archive.js" "js/toc.js" "js/footer-preview.js") }}
 {{- $processedScripts := slice ("" | resources.FromString "dummy.js") -}}
 
 {{- range $scripts -}}

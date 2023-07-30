@@ -2,10 +2,11 @@
  * Post customization
  **/
 article.content.post {
+
     // originally 5em
     .post-body {
         margin-top: 3em !important;
-        font-size: 17px; 
+        font-size: 17px;
     }
 }
 
@@ -14,26 +15,31 @@ article.content.post {
 }
 
 [data-theme="dark"] {
-    .post-body a {
+    .post-body p>a {
         text-decoration: none;
         color: var(--color-primary);
+
         &:hover {
             color: alpha(var(--color-primary), 0.50);
         }
     }
-    .post-body a.captionLink {
+
+    .post-body p>a.captionLink {
         text-decoration: underline;
     }
 }
+
 [data-theme="light"] {
-    .post-body a {
+    .post-body p>a {
         text-decoration: none;
         color: var(--color-primary-darker);
+
         &:hover {
             color: alpha(var(--color-primary-darker), 0.60);
         }
     }
-    .post-body a.captionLink {
+
+    .post-body p>a.captionLink {
         text-decoration: underline;
     }
 }

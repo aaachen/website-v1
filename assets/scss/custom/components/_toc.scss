@@ -1,129 +1,113 @@
 /**
- * TODO: remove this and use the mobile view
- * category bar
- * - desktop: side
- * - mobile: top
+ * Page sidebar TOC
  **/
-#category-toc {
-    position: fixed;
-    box-sizing: border-box;
-    max-width: 15vw;
-    max-height: 70vh;
-    overflow: auto;
-    text-align: inherit;
-    top: 105px;
-    padding-right: 0.8em;
-    border-right: 2px solid;
-    border-color: var(--color-contrast-medium);
-}
-#category-toc-mobile {
-    display: none;
-}
 
-.category-toc-nav {
-    padding-left: 0;
-    // margin from browser default
-    margin: 0;
-    li {
-        list-style: none;
-    }
-}
-
-.category-toc-i {
-    text-transform: capitalize;
-    transition: color $duration;
-}
-.category-toc-i:hover {
-    color: var(--color-primary);
-    transition: color $duration;
-    cursor: pointer;
-}
-.active {
-    color: var(--color-primary);
-}
-
-.category-toc-i-entry {
-    display: none;
-}
-
-.category-toc-nav > li > ul {
-    text-indent: -1em;
-}
-
-// when no space available for side contents
-@media only screen and (max-width: 1084px) {
-    #category-toc {
-        display: none;
-    }
-    #category-toc-mobile {
-        display: block;
-    }
-}
-
-/**
- * Page TOC
- **/
-.contents {
-    margin-top: 2em;
-}
-
-.sidebar {
-    display: none;
-}
-
-// display side ToC
+// Desktop
 @media (min-width: 1220px) {
-    .old-toc {
+    .old-toc-wrapper {
         display: none;
     }
-    .new-toc {
-        //top: 50px;
-        //float: left;
-        //transform: translateX(100%);
-        position: sticky;
-        top: 100px;
-        left: 0;
-        // can adjust below for an average TOC width. Remember to adjust responsive min-width if change
-        width: 180px; 
+
+    .new-toc-wrapper {
+        float: right;
+        clear: both;
+        padding-right: 2rem;
+        overflow-wrap: break-word;
+        max-width: 15em;
+        max-height: calc(95vh - 7rem);
+        text-align: right;
         line-height: 2em;
-        // wrap the words
-        word-wrap: break-word;
-        box-sizing: border-box;
-    }
-    .sidebar {
-        display: block;
-        position: absolute;
-        // account for the footer height
-        height: 98%;
-        display: block;
-        transform: translateX(-100%);
     }
 
-    .toc {
-        overflow: auto !important;
-    }
-    .toc > li > ol {
-        text-indent: -1em;
-    }
-    .toc > li > ol > li > ol {
-        text-indent: -2em;
-    }
-    .toc > li > ol > li > ol > li > ol {
-        text-indent: -3em;
-    }
+    #sidebar {
+        position: fixed;
+        top: 20vh;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s linear;
 
-    ol {
-        ol {
-            display: none;
-        }
-        .has-active > ol {
-            display: block;
+        &.show {
+            opacity: 1;
         }
 
+        float: right;
+        z-index: 100;
     }
 
-    .a-active {
+    // first level 
+    ol.toc>li {
+        font-size: 0.9rem;
+    }
+
+    ol.toc>li a {
+        color: var(--color-contrast-medium-high);
+
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+
+    ol.toc>li a.a-active {
         color: var(--color-primary);
-        transition: 0s !important;
     }
+
+    ol.toc li:before {
+        margin-right: 3px;
+        content: "#";
+        color: #2bbc8a;
+    }
+
+    // second level
+    ol.toc>li>ol li:before {
+        content: "▹";
+    }
+
+    ol.toc>li>ol {
+        font-size: 0.8rem;
+        font-weight: initial;
+    }
+
+    ol.toc>li>ol a {
+        color: var(--color-contrast-medium);
+
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+
+    [data-theme="light"] {
+        ol.toc>li>ol a {
+            color: var(--color-contrast-medium-high);
+        }
+    }
+
+
+    // third level
+    ol.toc>li>ol>li>ol li:before {
+        content: "·";
+    }
+
+    ol.toc>li>ol>li>ol {
+        font-size: 0.7rem;
+    }
+
+    ol,
+    ul {
+        &.toc {
+            white-space: normal;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 1220px) {
+    .old-toc-wrapper {
+        display: block;
+    }
+
+    .new-toc-wrapper {
+        display: none;
+    }
+
+    // TODO: mobile TOC widget
 }
