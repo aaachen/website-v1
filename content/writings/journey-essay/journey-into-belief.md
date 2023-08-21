@@ -8,9 +8,7 @@ slug: "into-belief"
 summary: "Genesis"
 ---
 
-[***<< Preface >>***](/writings/journey-essay/preface)
-
-## Certitude
+> Story about a time of identity crisis and attachment anxiety
 
 “In college, sometimes you just have to agree to disagree.” When I first heard this said in a college send away gathering, there was something jarring and bizarre about it that was difficult for me to process. As if a coded inference to a looming but imaginary danger, I found it to be logically nonsensical for why it needed to be said, yet so oddly disturbing, that I found myself reaching for a silent objection as I sat and listened to the speech. “What specifically, do you mean to agree to disagree? And if a common foothold has been established, what bars you from further discussion to reach a mutual understanding?” But before I could fully hit pause on my own musing, a few hands were already laid on my back. The speech is over, and now is the part where I should receive the blessings from my elders and be prepared to be spiritually strengthened in faith.
 

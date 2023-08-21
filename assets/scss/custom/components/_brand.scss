@@ -11,8 +11,9 @@
 
 [data-theme="light"] {
     .brand:hover {
-        // text-shadow:  0 0 2px #FFF01F;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        transition: text-shadow 300ms ease-in-out;
+        // dark glow
+        text-shadow: 5px 3px 4px rgba(0, 0, 0, 0.2);
+
+        transition: text-shadow 200ms ease-in-out;
     }
 }

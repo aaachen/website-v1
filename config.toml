@@ -328,7 +328,7 @@ uglyURLs = false
 
     # Add introduction, only poetry is supported now
     intro = "poetry"
-    introPoetryVerses = ["I guess all I can do is embrace the pandemonium", "find happiness in the unique insanity of being here, now"]
+    introPoetryVerses = ["I guess all I can do is embrace the pandemonium", "find happiness in the unique insanity of being here", "now"]
     letterDelay = 25
     completeLingerDelay = 250
     completeFadeOutDuration = 300
@@ -779,7 +779,8 @@ uglyURLs = false
     # primaryColorLight = "220, 90%, 56%"
 
     # green
-    primaryColorLight = "159, 63%, 45%"
+    # primaryColorLight = "159, 63%, 45%"
+    primaryColorLight = "159, 65%, 41%"
 
     ## Primary color of dark mode
     # blue

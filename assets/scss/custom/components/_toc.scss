@@ -79,6 +79,9 @@
         ol.toc>li>ol a {
             color: var(--color-contrast-medium-high);
         }
+        ol.toc>li a.a-active {
+            color: var(--color-primary);
+        }
     }
 
 
