@@ -3,7 +3,6 @@ title: "Financial Freedom"
 date: 2023-11-07T03:51:18+08:00
 tags: [finance]
 meta: true
-draft: true
 summary: money from the grounds of freedom
 ---
 
