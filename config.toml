@@ -543,10 +543,9 @@ uglyURLs = false
     # Dark Mode
 
     enableDarkMode = true
-
-    # This is bugged
-    defaultTheme = "dark"
+    
     # Note: light or dark
+    defaultTheme = "dark"
 
     # hideThemeSwitcher anywhwere but home
     hideThemeToggle = false  
@@ -565,7 +564,7 @@ uglyURLs = false
     #       hidden the theme toggle.
     #       Unless you enable the following
     #       option.
-    overrideSystemPreferences = false
+    overrideSystemPreferences = true
 
 
     ######################################
